@@ -27,11 +27,9 @@ $(document).ready(function() {
         data: JSON.stringify({}), // Sending an empty dictionary as requested
         contentType: "application/json", // Setting the content type to application/json
         success: function(places) {
-            console.log(places);
             // Assuming resp is an array of place objects
             const placesSection = $('section.places'); // Adjust the selector as needed
             $.each(places, function(index, place) {
-                console.log(place);
                 // Creating an article tag for each place
                 const $article = $('<article></article>');
                 $article.html(`

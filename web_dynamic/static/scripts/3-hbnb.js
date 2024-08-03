@@ -7,14 +7,14 @@ $(document).ready(function() {
       if ($(this).is(':checked')) {
         chosenAmenities[amenityId] = amenityName;
       } else {
-        delete chosenAmenities[amentiyID];
+        delete chosenAmenities[amenityID];
       }
   
       let amenitiesList = Object.values(chosenAmenities).join(', ')
       $('div.amenities h4').text(amenitiesList);
     });
 
-    $.get("http://0.0.0.0:5003/api/v1/status/", (resp) => {
+    $.get("http://localhost:5003/api/v1/status", (resp) => {
         if (resp.status === "OK") {
             $('div#api_status').addClass('available');
         } else {
@@ -23,13 +23,15 @@ $(document).ready(function() {
     })
 
     $.post({
-        url: "http://0.0.0.0:5003/api/v1/places_search/",
+        url: "http://localhost:5003/api/v1/places_search",
         data: JSON.stringify({}), // Sending an empty dictionary as requested
         contentType: "application/json", // Setting the content type to application/json
         success: function(places) {
+            console.log(places);
             // Assuming resp is an array of place objects
             const placesSection = $('section.places'); // Adjust the selector as needed
             $.each(places, function(index, place) {
+                console.log(place);
                 // Creating an article tag for each place
                 const $article = $('<article></article>');
                 $article.html(`
@@ -42,18 +44,12 @@ $(document).ready(function() {
                         <div class="number_rooms">${place.number_rooms} Bedroom${place.number_rooms !== 1 ? 's' : ''}</div>
                         <div class="number_bathrooms">${place.number_bathrooms} Bathroom${place.number_bathrooms !== 1 ? 's' : ''}</div>
 	                </div>
-	                <div class="user">
-                        <b>Owner:</b> ${place.user.first_name} ${place.user.last_name}
-                    </div>
                     <div class="description">
 	                    ${place.description}
                     </div>
                 `);
                 placesSection.append($article);
             });
-        },
-        error: function(xhr, status, error) {
-            console.error("An error occurred:", error);
-        }
-    })
+    }
   });
+});

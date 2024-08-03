@@ -7,7 +7,7 @@ $(document).ready(function() {
       if ($(this).is(':checked')) {
         chosenAmenities[amenityId] = amenityName;
       } else {
-        delete chosenAmenities[amentiyID];
+        delete chosenAmenities[amenityID];
       }
   
       let amenitiesList = Object.values(chosenAmenities).join(', ')

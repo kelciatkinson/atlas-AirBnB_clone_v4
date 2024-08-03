@@ -9,3 +9,17 @@ header .logo {
     left: 20px;
     height: 100%;
 }
+
+#api_status {
+    position: absolute;
+    right: 30px; /* 30px from the right border */
+    top: 15px;
+    width: 40px; /* Diameter of the circle */
+    height: 40px; /* Diameter of the circle */
+    border-radius: 50%; /* Makes the div circular */
+    background-color: #CCCCCC; /* Initial background color */
+}
+
+#api_status[class="available"] {
+    background-color: #FF545F; /* Background color for the dynamic status */
+}

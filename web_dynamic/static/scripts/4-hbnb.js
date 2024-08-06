@@ -9,8 +9,7 @@ $(document).ready(function() {
       } else {
         delete chosenAmenities[amenityID];
       }
-      console.log(Object.values(chosenAmenities));
-      console.log(Object.keys(chosenAmenities));
+
       $('div.amenities h4').text(Object.values(chosenAmenities).join(', '));
     });
 
@@ -55,7 +54,6 @@ $(document).ready(function() {
     loadPlaces();//populates the page without filtered amenities
 
     $('button').click(function() {
-        console.log(Object.keys(chosenAmenities));
         loadPlaces({amenities: Object.keys(chosenAmenities)});
     });
 });

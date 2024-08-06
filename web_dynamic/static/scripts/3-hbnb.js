@@ -14,7 +14,7 @@ $(document).ready(function() {
       $('div.amenities h4').text(amenitiesList);
     });
 
-    $.get("http://0.0.0.0:5003/api/v1/status", (resp) => {
+    $.get("http://localhost:5003/api/v1/status", (resp) => {
         if (resp.status === "OK") {
             $('div#api_status').addClass('available');
         } else {
@@ -23,7 +23,7 @@ $(document).ready(function() {
     })
 
     $.post({
-        url: "http://0.0.0.0:5003/api/v1/places_search",
+        url: "http://localhost:5003/api/v1/places_search",
         data: JSON.stringify({}), // Sending an empty dictionary as requested
         contentType: "application/json", // Setting the content type to application/json
         success: function(places) {

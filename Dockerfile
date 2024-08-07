@@ -19,8 +19,8 @@ RUN mkdir -p /var/run/mysqld && chown -R mysql:mysql /var/run/mysqld
 RUN pip3 install mysqlclient flasgger flask flask-cors flask-restful flask-sqlalchemy requests
 
 # Expose the MySQL port
-EXPOSE 5002
-EXPOSE 5003
+EXPOSE 5000
+EXPOSE 5001
 
 # AirBnB Clone Environment Variables
 ENV HBNB_MYSQL_USER=hbnb_dev
